@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tripnote</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container-fluid">
+        <%= link_to("TRIP NOTE", "#") %>
+      </div>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to("first","#") %></li>
+          <li><%= link_to("second","#") %></li>
+          <li><%= link_to("third","#") %></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+    
+  </body>
+</html>
