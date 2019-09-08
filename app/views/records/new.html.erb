@@ -1,0 +1,22 @@
+<div class="plan-new-wrapper" >
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h1 class="text-center">Add Record</h1>
+        
+        <%= form_for @record do |f| %>
+          <div class="form-group">
+            <%= f.label :record_title %>
+            <%= f.text_field :record_title, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :image %>
+            <%= f.file_field :image%>
+          </div>
+          <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

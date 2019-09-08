@@ -18,6 +18,10 @@ class User < ApplicationRecord
     Bcrypt::Password.create(string, cost: cost)
   end
   
+  has_many :plans
+  has_many :records
+  has_many :plan_destinations
+  
   #ランダムなトークンを作成する
   #def User.new_token
     #SecureRandom.urlsafe_base64

@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :current_user, :logged_in?, :log_out
   include SessionsHelper
   
   #ログインユーザーがいる場合、現在のユーザーにログインユーザーを代入する

@@ -1,0 +1,23 @@
+<div class="post-index-wrapper">
+  <div class="container-fluid">
+    <h1 class="text-center">Destinaitons</h1>
+    <%= link_to new_plan_destination_path(plan_id: @plan_id) do %>
+      <p class="text-center">Register Destination </p>
+    <% end %>
+    <% @plan_destinations.each do |plan_destination| %>
+      <div class="row">
+        <div class="col-lg-3 col-lg-offset-1">
+          <div class="post-index-single">
+             <%= image_tag plan_destination.image.url %>
+             <h2 class="post-title">
+              <%= plan_destination.destination_title %>
+             </h2>
+             <h3 class="post-description">
+              <%= plan_destination.description %>
+             </h3>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

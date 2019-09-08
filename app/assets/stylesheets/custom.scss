@@ -24,6 +24,21 @@ h1{
   }
 }
 
+.btn-black{
+  margin-top: 50px;
+  font-weight: 500;
+  color: #000;
+  border: 1px solid #000;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.0);
+
+  &:hover {
+    color: #000;
+  }
+}
+
 .top-introduction{
   width: 100vw;
   height: 100vh;
@@ -33,6 +48,10 @@ h1{
   background-repeat: no-repeat;
   background-attachment: fixed;
   
+}
+
+.box{
+  float: left;
 }
 
 .top-container{
@@ -65,6 +84,11 @@ h1{
   }
 }
 
+.plan-new-wrapper{
+  padding-top: 220px;
+}
+
+
 #error_explanation{
   color: red;
   
@@ -83,5 +107,35 @@ h1{
 
 .user-info{
   margin-top: 500px;
+}
+
+.post-index-wrapper {
+  padding-top: 70px;
+  background-color: #fafafa;
+  .post-index-single {
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+    .post-title {
+      font-size: 15px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+
+    img {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+  
+  .post-description{
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  
 }
 

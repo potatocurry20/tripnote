@@ -1,0 +1,20 @@
+<div class="post-index-wrapper">
+  <div class="container-fluid">
+    <h1 class="text-center">Records</h1>
+    <%= link_to new_record_path do %>
+      <p class="text-center">Create Record</p>
+    <% end %>
+    <% @records.each do |record| %>
+      <div class="row">
+        <div class="col-lg-3 col-lg-offset-1">
+          <div class="post-index-single">
+            <h2 class="post-title">
+              <%= record.record_title %>
+            </h2>
+            <%= image_tag record.image.url %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
