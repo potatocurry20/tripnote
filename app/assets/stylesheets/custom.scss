@@ -1,13 +1,95 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+/* univarsal */
+
+body{
+  padding-top: 30px;
+}
+
+section{
+  overflow: auto;
+}
+
+textarea{
+  resize: vertical;
+}
+
+.center{
+  text-align: center;
+}
+
+.center h1{
+  margin-bottom: 10px;
+}
+
 .text-white {
   color: #fff;
 }
 
+/* typography*/
+
+h1, h2, h3, h4, h5{
+  line-height: 1;
+}
+
 h1{
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
   font-weight: 500;
 }
+
+h2{
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #777;
+}
+
+p{
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+/* header */
+#logo{
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+#logo:hover{
+  color: #fff;
+  text-decoration: none;
+}
+
+/* footer */
+footer{
+  margin-top: 30px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: #fafafa;
+}
+
+footer ul{
+  float: right;
+  list-style: none;
+}
+
+footer ul li{
+  float: left;
+  margin-left: 15px;
+}
+
+
 
 .btn-white {
   margin-top: 50px;
@@ -56,10 +138,6 @@ h1{
 
 .top-container{
   padding-top: 220px;
-  
-  h1{
-    font-size: 50px;
-  }
 }
 
 .form-control{
@@ -91,7 +169,6 @@ h1{
 
 #error_explanation{
   color: red;
-  
   ul{
     color: red;
     margin: 0 0 30px 0;
@@ -116,6 +193,7 @@ h1{
     background-color: #fff;
     padding-top: 5px;
     padding-bottom: 10px;
+    margin-left: 20px;
     margin-top: 30px;
     border: 1px solid #e6ecf0;
     border-radius: 3px;
@@ -124,17 +202,22 @@ h1{
       padding-right: 20px;
       padding-left: 20px;
     }
+    
+    h3{
+      font-size: 15px;
+      margin: 0 0 10px 0;
+    }
 
     img {
       margin-top: 10px;
       margin-bottom: 20px;
-      width: 100%;
     }
   }
   
   .post-description{
       padding-right: 20px;
       padding-left: 20px;
+      font-size: 5px;
     }
   
 }

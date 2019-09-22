@@ -5,17 +5,15 @@
       <p class="text-center">Register Destination </p>
     <% end %>
     <% @plan_destinations.each do |plan_destination| %>
-      <div class="row">
-        <div class="col-lg-3 col-lg-offset-1">
-          <div class="post-index-single">
-             <%= image_tag plan_destination.image.url %>
-             <h2 class="post-title">
-              <%= plan_destination.destination_title %>
-             </h2>
-             <h3 class="post-description">
-              <%= plan_destination.description %>
-             </h3>
-          </div>
+      <div class="box">
+        <div class="post-index-single">
+          <%= image_tag plan_destination.image.url,size: '320x240' %>
+          <h2 class="post-title">
+            <%= plan_destination.destination_title %>
+          </h2>
+          <h3 class="post-description">
+            <%= plan_destination.description %>
+          </h3>
         </div>
       </div>
     <% end %>
