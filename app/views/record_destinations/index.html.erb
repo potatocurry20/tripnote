@@ -1,0 +1,27 @@
+<div class="post-index-wrapper">
+  <div class="container-fluid">
+    <h1 class="text-center">Places</h1>
+    <%= link_to new_record_destination_path(record_id: @record_id) do %>
+      <p class="text-center">Register Place</p>
+    <% end %>
+    <% @record_destinations.each do |record_destination| %>
+      <div class="box">
+        <div class="post-index-single">
+          <%= image_tag record_destination.image.url,size: '320x240' %>
+          <h2 class="post-title">
+            <%= record_destination.destination_title %>
+          </h2>
+          <h3 class="post-description">
+            <%= record_destination.description %>
+          </h3>
+          <h3>
+            <%= link_to "edit", edit_record_destination_path(id: record_destination.id) %>
+          </h3>
+          <h3>
+            <%= link_to "delete", record_destination, method: :delete %>
+          </h3>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

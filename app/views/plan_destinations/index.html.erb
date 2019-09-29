@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <h1 class="text-center">Destinaitons</h1>
     <%= link_to new_plan_destination_path(plan_id: @plan_id) do %>
-      <p class="text-center">Register Destination </p>
+      <p class="text-center">Register Destination</p>
     <% end %>
     <% @plan_destinations.each do |plan_destination| %>
       <div class="box">
@@ -13,6 +13,12 @@
           </h2>
           <h3 class="post-description">
             <%= plan_destination.description %>
+          </h3>
+          <h3>
+            <%= link_to "edit", edit_plan_destination_path(id: plan_destination.id) %>
+          </h3>
+          <h3>
+            <%= link_to "delete", plan_destination, method: :delete %>
           </h3>
         </div>
       </div>

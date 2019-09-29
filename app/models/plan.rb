@@ -4,6 +4,6 @@ class Plan < ApplicationRecord
   validates :image, presence: true, allow_nil: true
   
   belongs_to :user
-  has_many :plan_destinations
+  has_many :plan_destinations, :dependent => :destroy
   mount_uploader :image, ImageUploader
 end

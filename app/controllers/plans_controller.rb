@@ -4,7 +4,7 @@ class PlansController < ApplicationController
   end
   
   def index
-    @plans = Plan.all
+    @plans = current_user.plans
   end
   
   def create

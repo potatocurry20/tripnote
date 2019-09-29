@@ -5,14 +5,20 @@
       <p class="text-center">Create Record</p>
     <% end %>
     <% @records.each do |record| %>
-      <div class="row">
-        <div class="col-lg-3 col-lg-offset-1">
-          <div class="post-index-single">
-            <h2 class="post-title">
-              <%= record.record_title %>
-            </h2>
-            <%= image_tag record.image.url %>
-          </div>
+      <div class="box">
+        <div class="post-index-single">
+          <h2 class="post-title">
+            <%= record.record_title %>
+          </h2>
+          <%= link_to record_destinations_path(record_id: record.id) do %>
+            <%= image_tag record.image.url, size: '320x240' %>
+          <% end %>
+          <h3>
+            <%= link_to "edit", edit_record_path(id: record.id) %>
+          </h3>
+          <h3>
+            <%= link_to "delete", record, method: :delete %>
+          </h3>
         </div>
       </div>
     <% end %>

@@ -6,20 +6,20 @@
     <% end %>
     <% @plans.each do |plan| %>
       <div class="box">
-          <div class="post-index-single">
-            <h2 class="post-title">
-              <%= plan.plan_title %>
-            </h2>
-            <%= link_to plan_destinations_path(plan_id: plan.id) do %>
-             <%= image_tag plan.image.url, size: '320x240' %>
-            <% end %>
-            <h3>
-              <%= link_to "edit", edit_plan_path(id: plan.id) %>
-            </h3>
-            <h3>
-              <%= link_to "delete", plan, method: :delete %>
-            </h3>
-          </div>
+        <div class="post-index-single">
+          <h2 class="post-title">
+            <%= plan.plan_title %>
+          </h2>
+          <%= link_to plan_destinations_path(plan_id: plan.id) do %>
+            <%= image_tag plan.image.url, size: '320x240' %>
+          <% end %>
+          <h3>
+            <%= link_to "edit", edit_plan_path(id: plan.id) %>
+          </h3>
+          <h3>
+            <%= link_to "delete", plan, method: :delete %>
+          </h3>
+        </div>
       </div>
     <% end %>
   </div>
