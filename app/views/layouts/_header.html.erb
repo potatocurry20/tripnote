@@ -1,11 +1,29 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
-    <div class="container-fluid">
-      <%= link_to("TRIP NOTE", "/", id:"logo") %>
+  <div class="container-fluid">
+    <% if logged_in? %>
+        <%= link_to("TRIP NOTE", "/users/#{current_user.id}", id:"logo") %>
+      <% else %>
+        <%= link_to("TRIP NOTE", "/", id:"logo") %>
+      <% end %>
+      <nav>
+        <ul class="nav navbar-nav">
+          <% if logged_in? %>
+            <% if current_user.image.url %>
+              <%= link_to "/users/#{current_user.id}" do %>
+              <a><%= image_tag current_user.image.url %></a>
+              <% end %>
+            <% else %>
+              <%= link_to "/users/#{current_user.id}" do %>
+              <a><%= image_tag "default.jpeg" %></a>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </nav>
       <nav>
         <ul class="nav navbar-nav navbar-right">
          <% if logged_in? %>
-           <li><%= link_to("my page","/users/#{current_user.id}") %></li>
-           <li><%= link_to("users","#") %></li>
+           <li><%= link_to("users",users_path) %></li>
            <li><%= link_to("plans", plans_path) %></li>
            <li><%= link_to("records", records_path) %></li>
            <li><%= link_to "logout",logout_path, method: :delete %></li>
@@ -16,5 +34,5 @@
          <% end %>
         </ul>
       </nav>
-    </div>
+  </div>
 </header>

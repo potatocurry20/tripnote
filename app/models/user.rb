@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  #remember_token、activation_tokenというインスタンスをuserモデルに持たせる
-  attr_accessor :remember_token, :activation_token
+  #remember_token、activation_token、reset_tokenというインスタンスをuserモデルに持たせる
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
   validates :name, presence: true, length: {maximum: 15}
@@ -54,10 +54,26 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
   
-  has_many :plans
-  has_many :records
-  has_many :plan_destinations
+  #パスワード再設定の属性を追加する
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns(reset_digest: FILL_IN, reset_sent_at: FILL_IN)
+  end
   
+  #パスワード再設定用のメールを送信する
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+  
+  #パスワード再設定の期限が切れている場合はtrueを返す
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
+  
+  has_many :plans
+  has_many :plan_destinations
+  has_many :records
+  has_many :record_destinations
   mount_uploader :image, ImageUploader
   
   private

@@ -4,7 +4,7 @@
 /* univarsal */
 
 body{
-  padding-top: 30px;
+  padding-top: 50px;
 }
 
 section{
@@ -25,6 +25,40 @@ textarea{
 
 .text-white {
   color: #fff;
+}
+
+.text-black {
+  color: #000;
+}
+
+.btn-white {
+  margin-top: 50px;
+  font-weight: 500;
+  color: #fff;
+  border: 1px solid #fff;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.0);
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.btn-black{
+  margin-top: 50px;
+  font-weight: 500;
+  color: #000;
+  border: 1px solid #000;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-size: 20px;
+  background-color: rgba(0,0,0,0.0);
+
+  &:hover {
+    color: #000;
+  }
 }
 
 /* typography*/
@@ -71,6 +105,16 @@ p{
   text-decoration: none;
 }
 
+.nav img{
+  width: 40px;
+  height: 40px;
+  margin-top: 5px;
+  margin-left: 10px;
+  border-radius: 80%;
+  box-shadow: 0 2px 6px #c1ced7;
+  object-fit: cover;
+}
+
 /* footer */
 footer{
   padding-top: 5px;
@@ -89,7 +133,6 @@ footer ul li{
 }
 
 /* sidebar */
-
 aside{
   section.user_info{
     margin-top: 20px;
@@ -97,7 +140,7 @@ aside{
   section{
     padding: 10px 0;
     margin-top: 20px;
-    &:firts-child{
+    &:first-child{
       border: 0;
       padding-top: 0;
     }
@@ -116,37 +159,8 @@ aside{
   }
 }
 
-.btn-white {
-  margin-top: 50px;
-  font-weight: 500;
-  color: #fff;
-  border: 1px solid #fff;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 20px;
-  background-color: rgba(0,0,0,0.0);
-
-  &:hover {
-    color: #fff;
-  }
-}
-
-.btn-black{
-  margin-top: 50px;
-  font-weight: 500;
-  color: #000;
-  border: 1px solid #000;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 20px;
-  background-color: rgba(0,0,0,0.0);
-
-  &:hover {
-    color: #000;
-  }
-}
-
-.top-introduction{
+/* home */
+.home-container{
   width: 100vw;
   height: 100vh;
   background-image: url("tripnote-top.jpg");
@@ -154,21 +168,16 @@ aside{
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
+  h1{
+    margin-top: 0;
+    padding-top: 50px;
+  }
+  p{
+    margin-bottom: 0;
+  }
 }
 
-.box{
-  float: left;
-}
-
-.top-container{
-  padding-top: 220px;
-}
-
-.form-control{
-  height: 45px;
-}
-
+/* users new */
 .users-new-wrapper{
   width: 100vw;
   height: 100vh;
@@ -177,19 +186,76 @@ aside{
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  .users-new-container{
-    padding-top: 120px;
-    .form-group{
-     margin-bottom: 20px;
-   }
+  h1{
+    margin-top: 0;
+    padding-top: 50px;
   }
 }
 
-.plan-new-wrapper{
-  padding-top: 220px;
+
+/* sessions new */
+.sessions-new-wrapper{
+  width: 100vw;
+  height: 100vh;
+  background-image: url("tripnote-top.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  .form-wrapper{
+    padding-top: 100px;
+  }
+  .check_box{
+    float: left;
+  }
+  p{
+    display: inline;
+  }
+}
+
+/* users show */
+.user-info{
+  text-align: center;
+  img{
+    width: 150px;
+    height: 150px;
+  }
+  h2{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 
+/* users index */
+.users{
+  list-style: none;
+  margin: 0;
+  li{
+    overflow: auto;
+    padding: 10px;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.user-index-item{
+  width: 150px;
+  img{
+    width: 150px;
+    height: 150px;
+  }
+  h2{
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  p{
+    text-align: center;
+  }
+}
+  
+/* flash */
 #error_explanation{
   color: red;
   ul{
@@ -204,6 +270,28 @@ aside{
     color: $state-danger-text;
   }
 }
+
+/* need fix */
+
+
+.box{
+  float: left;
+}
+
+
+
+.form-control{
+  height: 45px;
+}
+
+
+
+.plan-new-wrapper{
+  padding-top: 220px;
+}
+
+
+
 
 
 .post-index-wrapper {

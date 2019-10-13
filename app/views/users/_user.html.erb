@@ -1,0 +1,22 @@
+
+<li>
+  <div class="user-index-item">
+    <% if user.image.url %>
+      <%= link_to user do %>
+        <%= image_tag user.image.url %>
+      <% end %>
+    <% else %>
+      <%= link_to user do %>
+        <%= image_tag "default_user.jpeg" %>
+      <% end %>  
+    <% end %>
+    <%= link_to user do %>
+      <h2 class="text-black"><%= user.name %></h2>
+    <% end %>
+    <% if current_user.admin? && !current_user?(user) %>
+      <%= link_to user, method: :delete,data: { confirm: "You sure?" } do%>
+        <p class="text-black">delete</p>
+      <% end %>
+    <% end %>
+  </div>
+</li>

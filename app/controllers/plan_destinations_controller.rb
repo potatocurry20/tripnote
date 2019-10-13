@@ -25,6 +25,23 @@ class PlanDestinationsController < ApplicationController
     end
   end
   
+  #「行った」を登録するためのページにとぶ
+  def goneedit
+    @plan_destination = PlanDestination.find(params[:id])
+  end
+  
+  #「行った」と写真を登録する
+  def gone
+    @plan_destination = PlanDestination.find(params[:id])
+    if @plan_destination.update_attributes(plan_destination_params)
+      @plan_destination.gone = true
+      @plan_destination.save
+      redirect_to plan_destinations_path(plan_id: @plan_destination.plan_id)
+    else
+      render 'plan_destinations/goneedit'
+    end
+  end
+  
   def edit
     @plan_destination = PlanDestination.find(params[:id])
   end

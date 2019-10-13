@@ -1,21 +1,37 @@
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user-info">
-      <h1>
-        <% if @user.image.url %>
-          <%= image_tag @user.image.url %>
-        <% else %>
-          <%= image_tag "default.jpeg" %>
-        <% end %>
-      </h1>
-      <h1>
-         <%= @user.name %>
-      </h1>
-      <p>
-        <%= link_to "edit", edit_user_path(id: @user.id) %>
-      </p>
-    </section>
-  </aside>  
+<div class="user-info">
+  <% if @user.image.url %>
+    <%= image_tag @user.image.url %>
+  <% else %>
+    <%= image_tag "default_user.jpeg" %>
+  <% end %>
+  <h2>
+    <%= @user.name %>
+  </h2>
+  <p>
+    <%= link_to "edit", edit_user_path(id: @user.id) %>
+  </p>
 </div>
+
+<% @record_destinations.each do |record_destination| %>
+  <div class="box">
+    <div class="post-index-single">
+      <%= image_tag record_destination.image.url,size: '320x240' %>
+      <h2 class="post-title">
+      <%= record_destination.destination_title %>
+      </h2>
+    </div>
+  </div>
+<% end %>
+<% @plan_destinations.each do |plan_destination| %>
+  <div class="box">
+    <div class="post-index-single">
+      <%= image_tag plan_destination.image.url,size: '320x240' %>
+      <h2 class="post-title">
+      <%= plan_destination.destination_title %>
+      </h2>
+    </div>
+  </div>
+<% end %>
+
   
 

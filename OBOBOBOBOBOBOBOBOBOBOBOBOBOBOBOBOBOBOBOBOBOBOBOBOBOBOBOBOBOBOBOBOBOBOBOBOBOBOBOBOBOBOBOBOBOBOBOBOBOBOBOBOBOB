@@ -1,0 +1,15 @@
+=> [32m#<User:0x0000000007cee8a0[0m
+ id: [1;34m1[0m,
+ name: [31m[1;31m"[0m[31mpotato[1;31m"[0m[31m[0m,
+ email: [31m[1;31m"[0m[31mpotato@potato.com[1;31m"[0m[31m[0m,
+ created_at: [1;34;4mMon[0m, [1;34m26[0m [1;34;4mAug[0m [1;34m2019[0m [1;34m12[0m:[1;34m49[0m:[1;34m03[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mSat[0m, [1;34m05[0m [1;34;4mOct[0m [1;34m2019[0m [1;34m04[0m:[1;34m18[0m:[1;34m00[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ password_digest: [31m[1;31m"[0m[31m$2a$12$j8AtxuHtTFzDhV.N5x8q.eaFhvejC9ZhCJexcHH61.qMRq5WduwSS[1;31m"[0m[31m[0m,
+ remember_digest: [31m[1;31m"[0m[31m$2a$12$xznYP2.NkeKepPV7tQBajOAIWulfvvxK9bjkOSxHWNGC30o4h6BdS[1;31m"[0m[31m[0m,
+ image: [31m[1;31m"[0m[31mポテト.jpeg[1;31m"[0m[31m[0m,
+ activation_digest: [1;36mnil[0m,
+ activated: [1;36mtrue[0m,
+ activated_at: [1;36mnil[0m,
+ reset_digest: [31m[1;31m"[0m[31m$2a$12$WtpChe.7icn8dQU1bkQHkuTSSQ/rNWo8P.rFGH0ir8ycngH2Ldq7S[1;31m"[0m[31m[0m,
+ reset_sent_at: [1;34;4mMon[0m, [1;34m30[0m [1;34;4mSep[0m [1;34m2019[0m [1;34m12[0m:[1;34m54[0m:[1;34m41[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ admin: [1;36mfalse[0m[32m>[0m

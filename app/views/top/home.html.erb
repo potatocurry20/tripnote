@@ -1,13 +1,11 @@
-<div class="top-introduction text-center">
-  <div class="container-fluid top-container">
-    <h1 class="text-white">TRIP NOTE</h1>
-    <div class="row">
+<div class="home-container container">
+    <h1 class="text-white center">TRIP NOTE</h1>
       <div class="col-md-2 col-md-offset-5">
         <%= link_to 'Sign Up', 'users/new', class: 'btn btn-block btn-white' %>
-         <p class="text-white">Are you already user? <%= link_to("Log in", login_path) %> </p>
-      </div>
-      
+         <span class="text-white center">Are you already user?</span> 
+         <%= link_to login_path do %> 
+           <p class="text-white center">Log in</p>
+         <% end %>
     </div>
-  </div>
 </div>
 

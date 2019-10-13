@@ -10,8 +10,14 @@
           <h2 class="post-title">
             <%= plan.plan_title %>
           </h2>
-          <%= link_to plan_destinations_path(plan_id: plan.id) do %>
-            <%= image_tag plan.image.url, size: '320x240' %>
+          <% if plan.image.url %>
+            <%= link_to plan_destinations_path(plan_id: plan.id) do %>
+              <%= image_tag plan.image.url, size: '320x240' %>
+            <% end %>
+          <% else %>
+            <%= link_to plan_destinations_path(plan_id: plan.id) do %>
+              <%= image_tag "default_trip.jpeg" , size: '320x240' %>
+            <% end %>
           <% end %>
           <h3>
             <%= link_to "edit", edit_plan_path(id: plan.id) %>

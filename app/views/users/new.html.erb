@@ -1,7 +1,7 @@
 <div class="users-new-wrapper">
- <div class="container-fluid">
-  <div class="row">
-   <div class="col-md-offset-4 col-md-4 users-new-container">
+ <h1 class="text-white center">Sign up</h1>
+ <div class="container">
+   <div class="col-md-offset-4 col-md-4">
      <%= form_for(@user) do |f|%>
      <%= render 'shared/error_messages' %>
      
@@ -28,6 +28,5 @@
        <%= f.submit "Creat User Accont", class: 'btn btn-white btn-block' %>
      <% end %>
    </div>
-  </div>
  </div>
 </div>

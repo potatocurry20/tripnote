@@ -2,9 +2,8 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">Edit Destination</h1>
-        
-         <%= form_for @plan_destination do |f| %>
+        <h1 class="text-center">Register to record</h1>
+         <%= form_for(@plan_destination, url: {controller: 'plan_destinations', action: 'gone' }) do |f| %>
           <div class="form-group">
             <%= f.label :destination_title %>
             <%= f.text_field :destination_title, class: 'form-control' %>
@@ -13,11 +12,7 @@
             <%= f.label :image %>
             <%= f.file_field :image%>
           </div>
-          <div class="form-group">
-            <%= f.label :description %>
-            <%= f.text_area :description, class: 'form-control' %>
-          </div>
-          <%= f.submit '編集', class: 'btn btn-black btn-block' %>
+          <%= f.submit '登録', class: 'btn btn-black btn-block' %>
          <% end %>
       </div>
     </div>
