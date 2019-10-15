@@ -10,8 +10,24 @@ Rails.application.routes.draw do
   get '/login', to:'sessions#new'
   post '/login', to:'sessions#create'
   delete '/logout', to:'sessions#destroy'
-  get 'plan_destinations/:id/goneedit', to:'plan_destinations#goneedit'
-  patch 'plan_destinations/:id/gone', to:'plan_destinations#gone'
+  
+  get 'visited/new', to:'plans#visited_new'
+  get 'visited/index', to:'plans#visited_index'
+  patch 'visited/create', to:'plans#visited_create'
+  
+  get ':id/destination_index', to:'plan_destinations#destination_index'
+  get ':id/place_index', to:'plan_destinations#place_index'
+  
+  get 'plan_destinations/:id/destination_new', to:'plan_destinations#destination_new'
+  get 'plan_destinations/:id/place_new', to:'plan_destinations#place_new'
+  post 'plan_destinations/:id/gone', to:'plan_destinations#gone'
+   post 'destination/:id/favorites', to: 'favorites#destination_create'
+  post 'place_create', to:'plan_destinations#place_create'
+ 
+  get 'favorites/index'
+  post 'plan/favorites', to: 'favorites#plan_create'
+ 
+  
   
   resources :users
   resources :plans

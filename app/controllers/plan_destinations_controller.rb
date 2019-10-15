@@ -1,12 +1,22 @@
 class PlanDestinationsController < ApplicationController
-  def new
-    @plan_destination = PlanDestination.new
-    @plan_id = params[:plan_id]
+  def destination_index
+    @plan_destinations = PlanDestination.where(plan_id: params[:id]).where(gone: false)
+    @plan_id = params[:id]
   end
   
-  def index
-    @plan_destinations = PlanDestination.where(plan_id: params[:plan_id])
-    @plan_id = params[:plan_id]
+  def destination_new
+    @plan_destination = PlanDestination.new
+    @plan_id = params[:id]
+  end
+  
+  def place_index
+    @plan_destinations = PlanDestination.where(plan_id: params[:id]).where(gone: true)
+    @plan_id = params[:id]
+  end
+  
+  def place_new
+    @plan_destination = PlanDestination.new
+    @plan_id = params[:id]
   end
   
   def create
@@ -19,26 +29,38 @@ class PlanDestinationsController < ApplicationController
     plan_destination.description = params[:plan_destination][:description]
     
     if plan_destination.save
-      redirect_to plan_destinations_path(plan_id: plan_destination.plan_id)
+      redirect_to("/#{plan_destination.plan_id}/destination_index")
     else
-      render :new
+      render("plan_destinations/destination_new")
     end
   end
   
-  #「行った」を登録するためのページにとぶ
-  def goneedit
+   def place_create
+    plan_destination = PlanDestination.new
+    plan_destination.user_id = current_user.id
+    plan_destination.plan_id = params[:plan_destination][:plan_id]
+    plan_destination.destination_title = params[:plan_destination][:destination_title]
+    plan_destination.image = params[:plan_destination][:image]
+    plan_destination.description = params[:plan_destination][:description]
+    plan_destination.gone = true
+    if plan_destination.save
+      redirect_to("/#{plan_destination.plan_id}/place_index")
+    else
+      render("plan_destinations/place_new")
+    end
+   end
+   
+  def show
     @plan_destination = PlanDestination.find(params[:id])
   end
   
-  #「行った」と写真を登録する
   def gone
     @plan_destination = PlanDestination.find(params[:id])
-    if @plan_destination.update_attributes(plan_destination_params)
-      @plan_destination.gone = true
-      @plan_destination.save
-      redirect_to plan_destinations_path(plan_id: @plan_destination.plan_id)
+    @plan_destination.gone = true
+    if @plan_destination.save
+      redirect_to("/#{@plan_destination.plan_id}/place_index")
     else
-      render 'plan_destinations/goneedit'
+      redirect_to("/#{@plan_destination.plan_id}/destination_index")
     end
   end
   
@@ -48,18 +70,21 @@ class PlanDestinationsController < ApplicationController
   
   def update
     @plan_destination = PlanDestination.find(params[:id])
-    if @plan_destination.update_attributes(plan_destination_params)
-      redirect_to plan_destinations_path(plan_id: @plan_destination.plan_id)
+    if @plan_destination.update_attributes(plan_destination_params) && @plan_destination.gone == false
+      redirect_to("/#{@plan_destination.plan_id}/destination_index")
+    elsif
+      @plan_destination.update_attributes(plan_destination_params) && @plan_destination.gone == true 
+      redirect_to("/#{@plan_destination.plan_id}/place_index")
     else
       render 'edit'
     end
   end
   
-   #削除した目的地が掲載されていた一覧ページにリダイレクトしたい
   def destroy
-    @plan_destination.plan_id = PlanDestination.find(params[:id])
+    @plan_destination = PlanDestination.find(params[:id])
     @plan_destination.destroy
-    redirect_to plan_destinations_path(plan_id: @plan_destination.plan_id)
+    flash[:success] = "Destination deleted"
+    redirect_to request.referrer || root_url
   end
   
   private

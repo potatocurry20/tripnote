@@ -13,8 +13,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @record_destinations = RecordDestination.where(user_id: current_user.id)
-    @plan_destinations = PlanDestination.where(user_id: current_user.id).where(gone: true)
+    @plan_destinations = PlanDestination.where(user_id: @user.id).where(gone: true)
   end
   
   def create

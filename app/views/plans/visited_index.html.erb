@@ -1,32 +1,39 @@
 <div class="post-index-wrapper">
-    <h1 class="text-center">Plans To Visit</h1>
-    <%= link_to new_plan_path do %>
-      <p class="text-center">Create Plan</p>
+  <div class="container-fluid">
+    <h1 class="text-center">Plans Visited</h1>
+    <%= link_to new_record_path do %>
+      <p class="text-center">Register Place</p>
     <% end %>
     <div class="post-area">
     <% @plans.each do |plan| %>
+    <% if not plan.plan_destinations.find_by(gone: true).nil? %>
         <div class="post-index-single">
           <h2 class="post-title">
             <%= plan.plan_title %>
           </h2>
           <% if plan.image.url %>
-            <%= link_to("/#{plan.id}/destination_index") do %>
+            <%= link_to("/#{plan.id}/place_index") do %>
               <%= image_tag plan.image.url, size: '320x240' %>
             <% end %>
           <% else %>
-            <%= link_to("/#{plan.id}/destination_index")  do %>
+            <%= link_to("/#{plan.id}/place_index")  do %>
               <%= image_tag "default_trip.jpeg" , size: '320x240' %>
             <% end %>
           <% end %>
           <div class="link-area">
-            <%= link_to edit_plan_path(id: plan.id) do %>
+            <%= link_to("https://maps.google.co.jp/maps?q=#{plan.plan_title}") do %>
+               <span class="fa fa-map-marker-alt"></span>
+            <% end %>
+            <%= link_to("/plans/#{plan.id}/edit") do %>
               <span class="fa fa-edit"></span>
             <% end %>
-            <%= link_to plan, method: :delete do %>
+            <%= link_to("/plans/#{plan.id}/destroy", {method: :delete}) do %>
               <span class="fa fa-trash-alt"></span>
             <% end %>
           </div>
         </div>
     <% end %>
+    <% end %>
+    </div>
   </div>
 </div>

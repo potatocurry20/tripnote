@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <h1 class="text-center">Add Plan</h1>
+        <h1 class="text-center">Create Plan</h1>
         
         <%= form_for @plan do |f| %>
           <div class="form-group">
@@ -13,7 +13,7 @@
             <%= f.label :image %>
             <%= f.file_field :image%>
           </div>
-          <%= f.submit '投稿', class: 'btn btn-black btn-block' %>
+          <%= f.submit '作成', class: 'btn btn-black btn-block' %>
         <% end %>
         
       </div>

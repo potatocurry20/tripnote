@@ -1,5 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
+@import 'font-awesome-sprockets';
 
 /* univarsal */
 
@@ -60,6 +62,16 @@ textarea{
     color: #000;
   }
 }
+
+.link-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+} .fa{
+  font-size: 30px;
+  color: #777;
+}
+
 
 /* typography*/
 
@@ -216,9 +228,11 @@ aside{
 /* users show */
 .user-info{
   text-align: center;
+  padding-top: 30px;
   img{
     width: 150px;
     height: 150px;
+    object-fit: cover;
   }
   h2{
     margin-top: 0;
@@ -226,23 +240,52 @@ aside{
   }
 }
 
+.user-box-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  img{
+    margin-bottom: 25px;
+  }
+}
+
+.user-box-area::before{
+  content:"";
+  display: block;
+  width:23%;
+  order:1;
+}
+.user-box-area::after{
+  content:"";
+  display: block;
+  width:23%;
+}
+
+
 
 /* users index */
 .users{
   list-style: none;
   margin: 0;
   li{
+    justify-content: center;
+    display: flex;
     overflow: auto;
     padding: 10px;
     border-bottom: 1px solid $gray-lighter;
   }
 }
 
+
 .user-index-item{
   width: 150px;
   img{
     width: 150px;
     height: 150px;
+    object-fit: cover;
   }
   h2{
     font-size: 20px;
@@ -254,6 +297,57 @@ aside{
     text-align: center;
   }
 }
+
+/* plans-index */
+.post-area{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  justify-content: space-evenly;
+}
+
+.post-index-wrapper{
+  padding-top: 30px;
+  margin-bottom: 30px;
+  background-color: #fafafa;
+  .post-index-single {
+    background-color: #fff;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    border: 1px solid #e6ecf0;
+    border-radius: 3px;
+    .post-title {
+      font-size: 15px;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+    h3{
+      font-size: 15px;
+      margin: 15px 0 10px 0;
+    }
+    img {
+      margin-top: 10px;
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+  }
+  
+  .post-description{
+      padding-right: 20px;
+      padding-left: 20px;
+      font-size: 5px;
+    }
+  
+}
+
+/* plans-new */
+.plan-new-wrapper{
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
   
 /* flash */
 #error_explanation{
@@ -273,62 +367,12 @@ aside{
 
 /* need fix */
 
-
-.box{
-  float: left;
-}
-
-
-
 .form-control{
   height: 45px;
 }
 
 
 
-.plan-new-wrapper{
-  padding-top: 220px;
-}
-
-
-
-
-
-.post-index-wrapper {
-  padding-top: 70px;
-  background-color: #fafafa;
-  .post-index-single {
-    background-color: #fff;
-    padding-top: 5px;
-    padding-bottom: 10px;
-    margin-left: 20px;
-    margin-top: 30px;
-    border: 1px solid #e6ecf0;
-    border-radius: 3px;
-    .post-title {
-      font-size: 15px;
-      padding-right: 20px;
-      padding-left: 20px;
-    }
-    
-    h3{
-      font-size: 15px;
-      margin: 0 0 10px 0;
-    }
-
-    img {
-      margin-top: 10px;
-      margin-bottom: 20px;
-    }
-  }
-  
-  .post-description{
-      padding-right: 20px;
-      padding-left: 20px;
-      font-size: 5px;
-    }
-  
-}
 
 /* remember_me */
 .check_box{

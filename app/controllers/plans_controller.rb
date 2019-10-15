@@ -3,14 +3,30 @@ class PlansController < ApplicationController
     @plan = Plan.new
   end
   
+  def visited_new
+    @plan = Plan.new
+  end
+  
   def index
     @plans = current_user.plans
   end
   
+  def visited_index
+     @plans = current_user.plans
+  end
+  
   def create
-    #ここのcurrent_userはどこからきているのか？
     @plan = current_user.plans.new(plan_params)
-    
+    if @plan.save
+      flash[:success]="You created the new plan."
+      redirect_to plans_path
+    else
+      render :new
+    end
+  end
+  
+  def visited_create
+    @plan = current_user.plans.new(plan_params)
     if @plan.save
       flash[:success]="You created the new plan."
       redirect_to plans_path

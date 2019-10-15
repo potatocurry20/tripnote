@@ -4,5 +4,6 @@ class Plan < ApplicationRecord
   
   belongs_to :user
   has_many :plan_destinations, :dependent => :destroy
+  has_many :favorites
   mount_uploader :image, ImageUploader
 end

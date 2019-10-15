@@ -24,8 +24,8 @@
         <ul class="nav navbar-nav navbar-right">
          <% if logged_in? %>
            <li><%= link_to("users",users_path) %></li>
-           <li><%= link_to("plans", plans_path) %></li>
-           <li><%= link_to("records", records_path) %></li>
+           <li><%= link_to("To Visit", plans_path) %></li>
+           <li><%= link_to("Visited", "/visited/index") %></li>
            <li><%= link_to "logout",logout_path, method: :delete %></li>
          <% else %>
            <li><%= link_to("home", "/") %></li>

@@ -74,6 +74,7 @@ class User < ApplicationRecord
   has_many :plan_destinations
   has_many :records
   has_many :record_destinations
+  has_many :favorites
   mount_uploader :image, ImageUploader
   
   private

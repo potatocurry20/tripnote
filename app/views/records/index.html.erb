@@ -4,8 +4,9 @@
     <%= link_to new_record_path do %>
       <p class="text-center">Create Record</p>
     <% end %>
+    <div class="post-area">
     <% @records.each do |record| %>
-      <div class="box">
+    <% if not plan.plan_destinations.find_by(gone: true).nil? %>
         <div class="post-index-single">
           <h2 class="post-title">
             <%= record.record_title %>
@@ -13,14 +14,20 @@
           <%= link_to record_destinations_path(record_id: record.id) do %>
             <%= image_tag record.image.url, size: '320x240' %>
           <% end %>
-          <h3>
-            <%= link_to "edit", edit_record_path(id: record.id) %>
-          </h3>
-          <h3>
-            <%= link_to "delete", record, method: :delete %>
-          </h3>
+          
+          <div class="link-area">
+            <%= link_to("https://maps.google.co.jp/maps?q=#{record.record_title}") do %>
+               <span class="fa fa-map-marker-alt"></span>
+            <% end %>
+            <%= link_to edit_record_path(id: record.id) do %>
+              <span class="fa fa-edit"></span>
+            <% end %>
+            <%= link_to record, method: :delete do %>
+              <span class="fa fa-trash-alt"></span>
+            <% end %>
+          </div>
         </div>
-      </div>
     <% end %>
+    </div>
   </div>
 </div>

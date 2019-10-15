@@ -1,0 +1,45 @@
+<div class="post-index-wrapper">
+  <div class="container-fluid">
+    <h1 class="text-center">Destination To Visit</h1>
+    <%= link_to("/plan_destinations/#{@plan_id}/destination_new") do %>
+      <p class="text-center">Register Destination</p>
+    <% end %>
+    <div class="post-area">
+    <% @plan_destinations.each do |plan_destination| %>
+        <div class="post-index-single">
+          <h2 class="post-title">
+            <%= plan_destination.destination_title %>
+          </h2>
+          <% if plan_destination.image.url %>
+            <%= link_to plan_destination_path(id: plan_destination.id) do %>
+              <%= image_tag plan_destination.image.url, size: '320x240' %>
+            <% end %>        
+          <% else %>
+            <%= link_to plan_destination_path(id: plan_destination.id) do %>
+              <%= image_tag "default_trip.jpeg" , size: '320x240' %>
+            <% end %>
+          <% end %>
+          <div class="link-area">
+            <%= link_to("https://maps.google.co.jp/maps?q=#{plan_destination.destination_title}") do %>
+               <span class="fa fa-map-marker-alt"></span>
+            <% end %>
+            
+            <%= link_to("/destination/#{plan_destination.id}/favorites", {method: :post}) do %>
+                <span class="fa fa-star"></span>
+            <% end %>
+            
+            <%= link_to("/plan_destinations/#{plan_destination.id}/gone", {method: :post}) do %>
+              <span class="fa fa-check-square"></span>
+            <% end %>
+            <%= link_to edit_plan_destination_path(id: plan_destination.id) do %>
+              <span class="fa fa-edit"></span>
+            <% end %>
+            <%= link_to plan_destination_path(id: plan_destination.id), method: :delete, data: { confirm: "Are you sure to delete this?" } do %>
+              <span class="fa fa-trash-alt"></span>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
+    </div>
+  </div>
+</div>
