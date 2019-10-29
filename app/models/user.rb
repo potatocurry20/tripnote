@@ -70,11 +70,34 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
-  has_many :plans
-  has_many :plan_destinations
-  has_many :records
-  has_many :record_destinations
-  has_many :favorites
+  #ユーザーをフォローする
+  def follow(other_user)
+    following << other_user
+  end
+  
+  #ユーザーをフォロー解除する
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+  
+  #現在のユーザーがフォローしてたらtrueを返す
+  def following?(other_user)
+    following.include?(other_user)
+  end
+  
+  
+  has_many :plans, dependent: :destroy
+  has_many :plan_destinations, dependent: :destroy
+  has_many :records, dependent: :destroy
+  has_many :record_destinations, dependent: :destroy
+  has_many :plan_favorites, dependent: :destroy
+  has_many :destination_favorites, dependent: :destroy
+  has_many :favorite_destinations, through: :destination_favorites, source: 'plan_destination'
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id",dependent: :destroy
+  has_many :following, through: :active_relationships, source: :followed
+  has_many :followers, through: :passive_relationships, source: :follower
+  
   mount_uploader :image, ImageUploader
   
   private

@@ -1,0 +1,15 @@
+=> [32m#<User:0x0000000005ffa410[0m
+ id: [1;34m2[0m,
+ name: [31m[1;31m"[0m[31mcurry[1;31m"[0m[31m[0m,
+ email: [31m[1;31m"[0m[31mcurry@curry.com[1;31m"[0m[31m[0m,
+ created_at: [1;34;4mWed[0m, [1;34m25[0m [1;34;4mSep[0m [1;34m2019[0m [1;34m11[0m:[1;34m42[0m:[1;34m58[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ updated_at: [1;34;4mFri[0m, [1;34m27[0m [1;34;4mSep[0m [1;34m2019[0m [1;34m02[0m:[1;34m54[0m:[1;34m46[0m [1;34;4mUTC[0m [1;34m+00[0m:[1;34m00[0m,
+ password_digest: [31m[1;31m"[0m[31m$2a$12$sLjyg9dYHvfzz8JlYDYJkujhNlfa0nLUgEiqbsuNOBK15BRgWHGLy[1;31m"[0m[31m[0m,
+ remember_digest: [31m[1;31m"[0m[31m$2a$12$t01/dKiLZOussSTz1d8bbeDE4Ghs8mxupJjODdRrQvxra3zybDXyW[1;31m"[0m[31m[0m,
+ image: [31m[1;31m"[0m[31mcurry.png[1;31m"[0m[31m[0m,
+ activation_digest: [31m[1;31m"[0m[31m$2a$12$6RVZjYp1TEuj6DaT2CxxIOSMHhfJHO.9qqcgvURpVLiNqYvagVyVG[1;31m"[0m[31m[0m,
+ activated: [1;36mfalse[0m,
+ activated_at: [1;36mnil[0m,
+ reset_digest: [1;36mnil[0m,
+ reset_sent_at: [1;36mnil[0m,
+ admin: [1;36mfalse[0m[32m>[0m

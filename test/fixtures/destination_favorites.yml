@@ -2,10 +2,8 @@
 
 one:
   user_id: 1
-  plan_id: 1
-  plan_destination_id: 1
+  plan_destination__id: 1
 
 two:
   user_id: 1
-  plan_id: 1
-  plan_destination_id: 1
+  plan_destination__id: 1

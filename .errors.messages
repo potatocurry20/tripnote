@@ -1,0 +1,18 @@
+
+[1mFrom:[0m /home/ec2-user/environment/tripnote/app/controllers/favorites_controller.rb @ line 31 FavoritesController#destination_create:
+
+    [1;34m21[0m: [32mdef[0m [1;34mdestination_create[0m
+    [1;34m22[0m:   favorite = [1;34;4mFavorite[0m.new
+    [1;34m23[0m:   favorite.user_id = current_user.id
+    [1;34m24[0m:   favorite.plan_destination_id = params[[33m:id[0m]
+    [1;34m25[0m: 
+    [1;34m26[0m:   [32mif[0m favorite.save
+    [1;34m27[0m:     flash[[33m:success[0m]=[31m[1;31m"[0m[31mYou registered as a favorite.[1;31m"[0m[31m[0m
+    [1;34m28[0m:     redirect_to request.referrer || root_url
+    [1;34m29[0m:   [32melse[0m
+    [1;34m30[0m:     binding.pry
+ => [1;34m31[0m:     flash[[33m:danger[0m]=[31m[1;31m"[0m[31mYou failed to register to favorites.[1;31m"[0m[31m[0m
+    [1;34m32[0m:     redirect_to request.referrer || root_url
+    [1;34m33[0m:   [32mend[0m
+    [1;34m34[0m: [32mend[0m
+

@@ -13,4 +13,21 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
   
+  #ログイン済みユーザーかどうかの確認
+   def logged_in_user
+     unless logged_in?
+       flash[:danger]="Please log in."
+       redirect_to login_url
+     end
+   end
+   
+   #正しいユーザーかどうかの確認
+   def correct_user
+     @user = User.find(params[:id])
+     unless current_user?(@user)
+       flash[:danger]="You are wrong user."
+       redirect_to(root_url) 
+     end
+   end
+  
 end

@@ -1,24 +1,20 @@
 class PlanDestinationsController < ApplicationController
+  before_action :logged_in_user
+  before_action :ensure_correct_user, only:[:gone, :edit, :update]
+  
+  #これから行きたい目的地の一覧を表示する
   def destination_index
     @plan_destinations = PlanDestination.where(plan_id: params[:id]).where(gone: false)
     @plan_id = params[:id]
   end
   
+  #これから行きたい目的地の登録フォームを開く
   def destination_new
     @plan_destination = PlanDestination.new
     @plan_id = params[:id]
   end
   
-  def place_index
-    @plan_destinations = PlanDestination.where(plan_id: params[:id]).where(gone: true)
-    @plan_id = params[:id]
-  end
-  
-  def place_new
-    @plan_destination = PlanDestination.new
-    @plan_id = params[:id]
-  end
-  
+  #これから行きたい目的地を登録する
   def create
     #省略表記したい
     plan_destination = PlanDestination.new
@@ -27,7 +23,6 @@ class PlanDestinationsController < ApplicationController
     plan_destination.destination_title = params[:plan_destination][:destination_title]
     plan_destination.image = params[:plan_destination][:image]
     plan_destination.description = params[:plan_destination][:description]
-    
     if plan_destination.save
       redirect_to("/#{plan_destination.plan_id}/destination_index")
     else
@@ -35,7 +30,20 @@ class PlanDestinationsController < ApplicationController
     end
   end
   
-   def place_create
+  #既に行った目的地の一覧を表示する
+  def place_index
+    @plan_destinations = PlanDestination.where(plan_id: params[:id]).where(gone: true)
+    @plan_id = params[:id]
+  end
+  
+  #既に行った目的地の登録フォームを開く
+  def place_new
+    @plan_destination = PlanDestination.new
+    @plan_id = params[:id]
+  end
+  
+  #既に行った目的地を登録する
+  def place_create
     plan_destination = PlanDestination.new
     plan_destination.user_id = current_user.id
     plan_destination.plan_id = params[:plan_destination][:plan_id]
@@ -48,12 +56,14 @@ class PlanDestinationsController < ApplicationController
     else
       render("plan_destinations/place_new")
     end
-   end
-   
+  end
+  
+  #目的地の詳細ページを開く
   def show
     @plan_destination = PlanDestination.find(params[:id])
   end
   
+  #目的地の「行った」を登録する
   def gone
     @plan_destination = PlanDestination.find(params[:id])
     @plan_destination.gone = true
@@ -64,10 +74,12 @@ class PlanDestinationsController < ApplicationController
     end
   end
   
+  #目的地の編集ページを開く
   def edit
     @plan_destination = PlanDestination.find(params[:id])
   end
   
+  #目的地を編集する
   def update
     @plan_destination = PlanDestination.find(params[:id])
     if @plan_destination.update_attributes(plan_destination_params) && @plan_destination.gone == false
@@ -80,6 +92,7 @@ class PlanDestinationsController < ApplicationController
     end
   end
   
+  #目的地を削除する
   def destroy
     @plan_destination = PlanDestination.find(params[:id])
     @plan_destination.destroy
@@ -91,4 +104,13 @@ class PlanDestinationsController < ApplicationController
     def plan_destination_params
       params.require(:plan_destination).permit(:image, :destination_title, :description)
     end
+    
+   #投稿に紐づくユーザーが正しいかどうかの確認
+   def ensure_correct_user
+     @plan_destination = PlanDestination.find(params[:id])
+     if @plan_destination.user_id != current_user.id
+       flash[:danger]="You are not authorized."
+       redirect_to(root_url) 
+     end
+   end
 end

@@ -1,11 +1,8 @@
 <div class="post-index-wrapper">
   <div class="container-fluid">
-    <h1 class="text-center">Destination To Visit</h1>
-    <%= link_to("/plan_destinations/#{@plan_id}/destination_new") do %>
-      <p class="text-center">Register Destination</p>
-    <% end %>
+    <h1 class="text-center">Favorite Destination</h1>
     <div class="post-area">
-    <% @plan_destinations.each do |plan_destination| %>
+    <% @favorite_destinations.each do |plan_destination| %>
         <div class="post-index-single">
           <h2 class="post-title">
             <%= plan_destination.destination_title %>
@@ -32,15 +29,7 @@
                   <span class="fa fa-star like-btn"></span>
               <% end %>
             <% end %>
-            <%= link_to("/plan_destinations/#{plan_destination.id}/gone", {method: :post}) do %>
-              <span class="fa fa-check-square"></span>
-            <% end %>
-            <%= link_to edit_plan_destination_path(plan_destination_id: plan_destination.id) do %>
-              <span class="fa fa-edit"></span>
-            <% end %>
-            <%= link_to plan_destination_path(id: plan_destination.id), method: :delete, data: { confirm: "Are you sure to delete this?" } do %>
-              <span class="fa fa-trash-alt"></span>
-            <% end %>
+            
           </div>
       </div>
     <% end %>

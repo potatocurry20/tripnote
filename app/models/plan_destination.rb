@@ -6,6 +6,7 @@ class PlanDestination < ApplicationRecord
   
   belongs_to :user
   belongs_to :plan
-  has_many :favorites
+  has_many :destination_favorites, dependent: :destroy
+  has_many :favorite_users, through: :destination_favorites, source: 'user'
   mount_uploader :image, ImageUploader
 end

@@ -1,4 +1,7 @@
 class PlansController < ApplicationController
+  before_action :logged_in_user
+  before_action :ensure_correct_user, only:[:edit, :update]
+  
   def new
     @plan = Plan.new
   end
@@ -12,7 +15,8 @@ class PlansController < ApplicationController
   end
   
   def visited_index
-     @plans = current_user.plans
+     @user = User.find_by(id: params[:id])
+     @plans = Plan.where(user_id: @user.id)
   end
   
   def create
@@ -59,6 +63,15 @@ class PlansController < ApplicationController
     def plan_params
       params.require(:plan).permit(:image, :plan_title)
     end
+    
+   #投稿に紐づくユーザーが正しいかどうかの確認
+   def ensure_correct_user
+     @plan = PlanDestination.find(params[:id])
+     if @plan.user_id != current_user.id
+       flash[:danger]="You are not authorized."
+       redirect_to(root_url) 
+     end
+   end
   
 end
 

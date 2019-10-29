@@ -67,11 +67,14 @@ textarea{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-} .fa{
+ .fa{
   font-size: 30px;
   color: #777;
+ }
+  .like-btn{
+    color: #fff100;
+  }
 }
-
 
 /* typography*/
 
@@ -171,6 +174,8 @@ aside{
   }
 }
 
+
+
 /* home */
 .home-container{
   width: 100vw;
@@ -229,15 +234,45 @@ aside{
 .user-info{
   text-align: center;
   padding-top: 30px;
-  img{
+  .user-info-box{
+    img {
     width: 150px;
     height: 150px;
     object-fit: cover;
+    border: 1px solid #000;
+    border-radius: 20px;
+    }
+    h3{
+      margin-top: 5px;
+      font-size: 15px;
+    }
   }
-  h2{
-    margin-top: 0;
-    margin-bottom: 0;
+  .user-stats {
+  overflow: auto;
+  margin-top: 15px;
+  padding: 0;
+  a {
+    float: left;
+    padding: 0 10px;
+    border-left: 1px solid $gray-lighter;
+    color: gray;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: blue;
+    }
   }
+  strong {
+    display: block;
+  }
+}
+}
+
+.users.follow {
+  padding: 0;
 }
 
 .user-box-area{
@@ -246,25 +281,27 @@ aside{
   justify-content: flex-start;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  margin-top: 25px;
   margin-bottom: 25px;
+  padding-top: 20px;
+  border-top: 1px solid $gray-lighter;
   img{
     margin-bottom: 25px;
+    border: 1px solid $gray-lighter;
   }
 }
 
 .user-box-area::before{
   content:"";
   display: block;
-  width:23%;
+  width:25%;
   order:1;
 }
 .user-box-area::after{
   content:"";
   display: block;
-  width:23%;
+  width:25%;
 }
-
-
 
 /* users index */
 .users{

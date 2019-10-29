@@ -1,15 +1,47 @@
-<div class="user-info">
-  <% if @user.image.url %>
-    <%= image_tag @user.image.url %>
-  <% else %>
-    <%= image_tag "default_user.jpeg" %>
-  <% end %>
-  <h2>
-    <%= @user.name %>
-  </h2>
-  <p class="text-black">
-    <%= link_to "edit", edit_user_path(id: @user.id) %>
-  </p>
+<div class="container-fluid">
+  <div class="row user-info">
+    <div class="col-md-4 col-md-offset-4 user-info-box ">
+      <% if @user.image.url %>
+        <%= image_tag @user.image.url %>
+      <% else %>
+        <%= image_tag "default_user.jpeg" %>
+      <% end %>
+      <h3>
+        <%= @user.name %>
+      </h3>
+      <% if current_user == @user %>
+        <h3 class="btn btn-default btn-sm">
+          <%= link_to edit_user_path(id: @user.id) do %>
+            <h3 class="text-muted">edit your profile</h3>
+          <% end %>
+        </h3>
+      <% end %>
+      <h3>
+       <%= render 'follow_form' if logged_in? %>
+       </h3>
+    </div>
+    <div class="col-md-4 user-stats">
+      <a href="<%= "/#{@user.id}/visited/index" %>" >
+        <strong class="stat">
+           <%= @plan_destinations.count %>
+        </strong>
+        Visited
+      </a>
+      <a href="<%= following_user_path(@user) %>">
+      <strong id="following" class="stat">
+        <%= @user.following.count %>
+      </strong>
+      following
+      </a>
+      <a href="<%= followers_user_path(@user) %>">
+      <strong id="followers" class="stat">
+        <%= @user.followers.count %>
+      </strong>
+      followers
+      </a>
+    </div>
+    
+  </div>
 </div>
 <div class="user-box-area">
   <% @plan_destinations.each do |plan_destination| %>

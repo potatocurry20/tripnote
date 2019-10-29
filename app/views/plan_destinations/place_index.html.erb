@@ -23,6 +23,15 @@
             <%= link_to("https://maps.google.co.jp/maps?q=#{plan_destination.destination_title}") do %>
                <span class="fa fa-map-marker-alt"></span>
             <% end %>
+            <% if !plan_destination.favorite_users.include?(current_user) %>
+              <%= link_to destination_favorites_path(id: plan_destination.id), method: :post do %>
+                  <span class="fa fa-star"></span>
+              <% end %>
+            <% else %>
+              <%= link_to destination_favorites_path(id: plan_destination.id), method: :delete do %>
+                  <span class="fa fa-star like-btn"></span>
+              <% end %>
+            <% end %>
             <%= link_to edit_plan_destination_path(id: plan_destination.id) do %>
               <span class="fa fa-edit"></span>
             <% end %>
