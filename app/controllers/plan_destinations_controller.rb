@@ -95,9 +95,15 @@ class PlanDestinationsController < ApplicationController
   #目的地を削除する
   def destroy
     @plan_destination = PlanDestination.find(params[:id])
-    @plan_destination.destroy
-    flash[:success] = "Destination deleted"
-    redirect_to request.referrer || root_url
+    if @plan_destination.gone == false
+      @plan_destination.destroy
+      flash[:success] = "Destination deleted"
+      redirect_to plans_path
+    elsif @plan_destination.gone == true
+      @plan_destination.destroy
+      flash[:success] = "Destination deleted"
+      redirect_to("/#{current_user.id}/visited/index")
+    end
   end
   
   private

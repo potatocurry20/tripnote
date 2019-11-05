@@ -40,7 +40,9 @@ gem 'bootstrap-sass'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+#画像アップロード
 gem 'carrierwave'
+#画像の加工
 gem 'rmagick' 
 gem 'mini_magick'
 

@@ -46,7 +46,7 @@
 <div class="user-box-area">
   <% @plan_destinations.each do |plan_destination| %>
     <%= link_to plan_destination_path(id: plan_destination.id) do %>
-      <%= image_tag plan_destination.image.url,size: '320x240' %>
+      <%= image_tag plan_destination.image.thumb.url %>
     <% end %>
   <% end %>
 </div>

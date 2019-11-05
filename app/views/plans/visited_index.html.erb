@@ -1,12 +1,12 @@
 <div class="post-index-wrapper">
   <div class="container-fluid">
     <h1 class="text-center">Visited Place</h1>
-    <%= link_to new_record_path do %>
-      <p class="text-center">Register Place</p>
+    <%= link_to("/visited/new") do %>
+      <p class="text-center">Register Visited Place</p>
     <% end %>
     <div class="post-area">
     <% @plans.each do |plan| %>
-    <% if not plan.plan_destinations.find_by(gone: true).nil? %>
+      <% if not plan.plan_destinations.find_by(gone: true).nil? %>
         <div class="post-index-single">
           <h2 class="post-title">
             <%= plan.plan_title %>
@@ -32,7 +32,7 @@
             <% end %>
           </div>
         </div>
-    <% end %>
+      <% end %>
     <% end %>
     </div>
   </div>

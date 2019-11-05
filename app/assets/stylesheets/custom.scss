@@ -239,7 +239,7 @@ aside{
     width: 150px;
     height: 150px;
     object-fit: cover;
-    border: 1px solid #000;
+    border: 1px solid #fff;
     border-radius: 20px;
     }
     h3{
@@ -286,21 +286,11 @@ aside{
   padding-top: 20px;
   border-top: 1px solid $gray-lighter;
   img{
+    width: 300px;
+    height: 300px;
     margin-bottom: 25px;
     border: 1px solid $gray-lighter;
   }
-}
-
-.user-box-area::before{
-  content:"";
-  display: block;
-  width:25%;
-  order:1;
-}
-.user-box-area::after{
-  content:"";
-  display: block;
-  width:25%;
 }
 
 /* users index */
@@ -393,6 +383,10 @@ aside{
     color: red;
     margin: 0 0 30px 0;
   }
+}
+
+.alert{
+  margin: 0;
 }
 
 .field_with_errors{

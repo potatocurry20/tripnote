@@ -9,6 +9,24 @@ class User < ApplicationRecord
   has_secure_password
   VALID_PASWAD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,32}\z/i
   validates :password, presence: true, length: {in: 8..32}, format: {with: VALID_PASWAD_REGEX}, allow_nil: true
+    
+  has_many :plans, dependent: :destroy
+  has_many :plan_destinations, dependent: :destroy
+  has_many :records, dependent: :destroy
+  has_many :record_destinations, dependent: :destroy
+  has_many :plan_favorites, dependent: :destroy
+  has_many :destination_favorites, dependent: :destroy
+  has_many :favorite_destinations, through: :destination_favorites, source: 'plan_destination'
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id",dependent: :destroy
+  
+  #フォローした相手がたくさんいる
+  has_many :following, through: :active_relationships, source: :followed
+  #フォローした側がたくさんいる
+  has_many :followers, through: :passive_relationships, source: :follower
+  
+  mount_uploader :image, ImageUploader
+  
   
   #渡された文字列のハッシュを返す
   def User.digest(string)
@@ -71,6 +89,7 @@ class User < ApplicationRecord
   end
   
   #ユーザーをフォローする
+  #<<演算子 (Shovel Operator) で配列の最後に追記する
   def follow(other_user)
     following << other_user
   end
@@ -84,21 +103,7 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
-  
-  
-  has_many :plans, dependent: :destroy
-  has_many :plan_destinations, dependent: :destroy
-  has_many :records, dependent: :destroy
-  has_many :record_destinations, dependent: :destroy
-  has_many :plan_favorites, dependent: :destroy
-  has_many :destination_favorites, dependent: :destroy
-  has_many :favorite_destinations, through: :destination_favorites, source: 'plan_destination'
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :passive_relationships, class_name:  "Relationship", foreign_key: "followed_id",dependent: :destroy
-  has_many :following, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
-  
-  mount_uploader :image, ImageUploader
+
   
   private
   

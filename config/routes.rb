@@ -2,9 +2,7 @@ Rails.application.routes.draw do
   get 'password_resets/new'
   get 'password_resets/edit'
   get 'account/Activations'
-  get 'record_destinations/new'
   get 'plan_destinations/new'
-  get 'records/new'
   get 'plans/new'
   root 'top#home'
   get '/login', to:'sessions#new'
@@ -29,9 +27,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :plans
-  resources :records
   resources :plan_destinations
-  resources :record_destinations
   resources :users do 
     member do
       get :following, :followers
